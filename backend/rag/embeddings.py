@@ -1,10 +1,27 @@
-from sentence_transformers import SentenceTransformer
+model = None
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+
+def load_model():
+
+    global model
+
+    if model is None:
+
+        from sentence_transformers import SentenceTransformer
+
+        model = SentenceTransformer(
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+    return model
 
 
 def generate_embeddings(chunks):
 
-    embeddings = model.encode(chunks).tolist()
+    model_instance = load_model()
+
+    embeddings = model_instance.encode(
+        chunks
+    ).tolist()
 
     return embeddings

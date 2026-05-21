@@ -1,12 +1,28 @@
-from sentence_transformers import SentenceTransformer
 from backend.rag.vector_store import collection
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = None
 
 
-def retrieve_chunks(query, top_k=3):
+def load_model():
 
-    query_embedding = model.encode(query).tolist()
+    global model
+
+    if model is None:
+
+        from sentence_transformers import SentenceTransformer
+
+        model = SentenceTransformer(
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+    return model
+
+
+def retrieve_chunks(query, top_k=5):
+
+    model_instance = load_model()
+
+    query_embedding = model_instance.encode(query).tolist()
 
     results = collection.query(
         query_embeddings=[query_embedding],

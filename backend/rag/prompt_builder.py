@@ -1,6 +1,6 @@
 def build_prompt(query, retrieved_chunks, history):
 
-    context = "\n".join(retrieved_chunks[:2])
+    context = "\n".join(retrieved_chunks[:4])
 
     return f"""
 You are an AI Document Assistant.

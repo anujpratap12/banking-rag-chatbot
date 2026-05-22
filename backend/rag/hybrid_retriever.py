@@ -2,7 +2,7 @@ from rank_bm25 import BM25Okapi
 from backend.rag.vector_store import collection
 
 
-def hybrid_search(query, top_k=2):
+def hybrid_search(query, top_k=4):
 
     try:
 

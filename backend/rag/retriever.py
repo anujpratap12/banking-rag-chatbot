@@ -1,5 +1,4 @@
-from rag.vector_store import collection
-
+from backend.rag.vector_store import collection
 model = None
 
 

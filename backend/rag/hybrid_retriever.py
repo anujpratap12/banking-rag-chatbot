@@ -1,4 +1,4 @@
-from rank_bm25 import BM25Okapi
+from backend.rag.retriever import load_model
 from backend.rag.vector_store import collection
 
 
@@ -6,44 +6,21 @@ def hybrid_search(query, top_k=4):
 
     try:
 
-        # Semantic Search
-        semantic_results = collection.query(
-            query_texts=[query],
+        model = load_model()
+
+        query_embedding = model.encode(query).tolist()
+
+        results = collection.query(
+            query_embeddings=[query_embedding],
             n_results=top_k
         )
 
-        semantic_chunks = semantic_results["documents"][0]
+        retrieved_chunks = results["documents"][0]
 
-        # Get All Docs
-        all_docs = collection.get()["documents"]
-
-        if not all_docs:
-            return semantic_chunks
-
-        # BM25
-        tokenized_docs = [
-            doc.split() for doc in all_docs
-        ]
-
-        bm25 = BM25Okapi(tokenized_docs)
-
-        tokenized_query = query.split()
-
-        bm25_results = bm25.get_top_n(
-            tokenized_query,
-            all_docs,
-            n=top_k
-        )
-
-        # Merge Results
-        combined_results = list(
-            set(semantic_chunks + bm25_results)
-        )
-
-        return combined_results[:top_k]
+        return retrieved_chunks
 
     except Exception as e:
 
-        print("Hybrid Search Error:", e)
+        print("Retriever Error:", e)
 
         return []

@@ -158,11 +158,12 @@ function App() {
   // QUICK PROMPTS LIST
 
   const quickPrompts = [
-    "What documents are required for KYC?",
-    "What is the home loan interest rate?",
-    "What is the maximum car loan amount?",
-    "Explain credit card benefits.",
-    "What is the loan approval time?"
+  
+    "Summarize the uploaded document",
+    "What are the key points in this document?",
+    "Explain the important policies mentioned",
+    "What are the requirements discussed?",
+    "Give a short overview of the uploaded file"
 
   ];
 

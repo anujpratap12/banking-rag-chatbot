@@ -56,6 +56,39 @@ The project demonstrates:
 
 ---
 
+---
+
+---
+
+# Project Screenshots
+
+## Chatbot Interface
+
+![Chatbot UI](screenshots/chatbot-ui.png)
+
+---
+
+## Document Upload & AI Response
+
+![Upload Demo](screenshots/upload-demo.png)
+
+---
+
+## Multi-Document Support - DOCX
+
+![DOCX Support](screenshots/multi-doc-support_1.png)
+
+---
+
+## Multi-Document Support - PDF
+
+![PDF Support](screenshots/multi-doc-support_2.png)
+
+---
+
+## Multi-Document Support - TXT
+
+![TXT Support](screenshots/multi-doc-support_3.png)
 # Tech Stack
 
 ## Frontend

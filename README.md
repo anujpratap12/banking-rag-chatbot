@@ -95,6 +95,17 @@ The project demonstrates:
 # Architecture Diagram
 
 ![Architecture Diagram](screenshots/Architecture.png)
+
+# Sample Documents
+
+The repository includes sample banking documents used for testing the RAG chatbot:
+
+- PDF document
+- DOCX document
+- TXT document
+
+Location:
+sample-documents/
 # Tech Stack
 
 ## Frontend

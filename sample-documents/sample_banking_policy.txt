@@ -1,0 +1,33 @@
+
+AI Banking Support Chatbot - Sample Banking Policy Document
+
+1. Personal Loan Eligibility
+- Minimum monthly salary required: ₹25,000
+- Age eligibility: 21 to 60 years
+- Minimum work experience: 1 year
+
+2. Home Loan Information
+- Home loan interest rate starts from 8.5%
+- Maximum repayment tenure: 30 years
+- Processing fee: 1% of loan amount
+
+3. Car Loan Information
+- Maximum car loan amount: ₹25 lakhs
+- Loan approval time: 3-5 working days
+- Down payment required: Minimum 10%
+
+4. KYC Verification Documents
+- Aadhaar Card
+- PAN Card
+- Passport-size Photograph
+- Address Proof
+
+5. Credit Card Services
+- Minimum annual income required: ₹3 lakhs
+- Cashback available on dining and fuel
+- Reward points for every transaction
+
+6. Banking Support Features
+- AI-powered RAG chatbot support
+- Hybrid retrieval using ChromaDB and BM25
+- FastAPI backend with React frontend

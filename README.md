@@ -70,7 +70,7 @@ The project demonstrates:
 
 ## Document Upload & AI Response
 
-![Upload Demo](screenshots/upload-demo.png)
+![Upload Demo](screenshots/Upload-demo.png)
 
 ---
 

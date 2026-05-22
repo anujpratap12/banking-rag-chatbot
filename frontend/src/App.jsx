@@ -158,11 +158,12 @@ function App() {
   // QUICK PROMPTS LIST
 
   const quickPrompts = [
-    "What are the mandatory APIs?",
-    "Explain RAG architecture",
-    "What are bonus features?",
-    "Explain vector databases",
-    "What is hybrid retrieval?"
+    "What documents are required for KYC?",
+    "What is the home loan interest rate?",
+    "What is the maximum car loan amount?",
+    "Explain credit card benefits.",
+    "What is the loan approval time?"
+
   ];
 
   return (

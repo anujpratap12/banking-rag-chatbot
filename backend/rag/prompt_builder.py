@@ -1,38 +1,18 @@
-def build_prompt(
-    query,
-    retrieved_chunks,
-    conversation_history
-):
+def build_prompt(query, retrieved_chunks, history):
 
-    context = "\n\n".join(retrieved_chunks)
+    context = "\n".join(retrieved_chunks[:2])
 
-    prompt = f"""
-You are an AI Banking Support Assistant.
+    return f"""
+You are an AI Document Assistant.
 
-Use:
-1. Retrieved context
-2. Previous conversation history
+Answer ONLY from the provided context.
 
-to answer the user question.
-
------------------------------------
-PREVIOUS CONVERSATION:
-{conversation_history}
------------------------------------
-
-RETRIEVED CONTEXT:
-{context}
------------------------------------
-
-CURRENT USER QUESTION:
-{query}
-
-Instructions:
-- Answer professionally.
-- Use previous conversation if needed.
-- Answer ONLY from context/history.
-- If answer is unavailable, say:
+If answer is not present, say:
 'I could not find this information in the uploaded documents.'
-"""
 
-    return prompt
+Context:
+{context}
+
+Question:
+{query}
+"""

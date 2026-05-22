@@ -106,6 +106,23 @@ The repository includes sample banking documents used for testing the RAG chatbo
 
 Location:
 sample-documents/
+
+# Demo Questions Used
+
+## DOCX Demo Questions
+
+- Summarize the uploaded document
+- What are the key points in this document?
+- What are the requirements discussed?
+
+## PDF Demo Questions
+
+- Tell me about the loan information in the document
+- What financial services are discussed?
+
+## TXT Demo Questions
+
+- Give a short overview of the uploaded file
 # Tech Stack
 
 ## Frontend

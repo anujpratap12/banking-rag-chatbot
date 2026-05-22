@@ -1,22 +1,15 @@
 import chromadb
-import os
+import uuid
 
-CHROMA_PATH = "./chroma_db"
-
-os.makedirs(CHROMA_PATH, exist_ok=True)
-
-client = chromadb.PersistentClient(
-    path=CHROMA_PATH
-)
+client = chromadb.PersistentClient(path="chroma_db")
 
 collection = client.get_or_create_collection(
     name="banking_docs"
 )
 
-
 def store_chunks(chunks, embeddings):
 
-    ids = [f"id_{i}" for i in range(len(chunks))]
+    ids = [str(uuid.uuid4()) for _ in chunks]
 
     collection.add(
         documents=chunks,

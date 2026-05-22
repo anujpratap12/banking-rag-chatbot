@@ -492,29 +492,7 @@ function App() {
 
                 {/* SOURCES */}
 
-                {msg.sources && (
-
-                  <div className="sources-area">
-
-                    <div className="source-chips">
-
-                      {msg.sources.map((source, idx) => (
-
-                        <div
-                          key={idx}
-                          className="source-chip"
-                        >
-
-                          📄 {source}
-
-                        </div>
-
-                      ))}
-
-                    </div>
-
-                  </div>
-                )}
+                
 
                 {/* TIMESTAMP */}
 

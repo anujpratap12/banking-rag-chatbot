@@ -1,6 +1,6 @@
 from rank_bm25 import BM25Okapi
 
-from backend.rag.retriever import collection
+from backend.rag.vector_store import collection
 
 
 def hybrid_search(query, top_k=3):

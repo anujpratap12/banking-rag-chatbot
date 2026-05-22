@@ -215,102 +215,79 @@ function App() {
         </div>
 
         {/* SESSION LIST */}
-
         <div className="session-list">
 
-          <div
-            className="session-item session-active"
-            onClick={() =>
-              handleQuickPrompt(
-                "Explain personal loan eligibility."
-              )
-            }
-          >
+  <div
+    className="session-item session-active"
+    onClick={() =>
+      handleQuickPrompt(
+        "Summarize the uploaded document"
+      )
+    }
+  >
 
-            <div className="session-dot dot-active"></div>
+    <div className="session-dot dot-active"></div>
 
-            <div className="session-title">
-              Bank Loan Queries
-            </div>
+    <div className="session-title">
+      Document Summary
+    </div>
 
-          </div>
+  </div>
 
-          <div
-            className="session-item"
-            onClick={() =>
-              handleQuickPrompt(
-                "Explain credit card eligibility and benefits."
-              )
-            }
-          >
+  <div
+    className="session-item"
+    onClick={() =>
+      handleQuickPrompt(
+        "What are the key points in this document?"
+      )
+    }
+  >
 
-            <div className="session-dot"></div>
+    <div className="session-dot"></div>
 
-            <div className="session-title">
-              Credit Card Help
-            </div>
+    <div className="session-title">
+      Key Points
+    </div>
 
-          </div>
+  </div>
 
-          <div
-            className="session-item"
-            onClick={() =>
-              handleQuickPrompt(
-                "What documents are required for KYC?"
-              )
-            }
-          >
+  <div
+    className="session-item"
+    onClick={() =>
+      handleQuickPrompt(
+        "Explain the important policies mentioned"
+      )
+    }
+  >
 
-            <div className="session-dot"></div>
+    <div className="session-dot"></div>
 
-            <div className="session-title">
-              KYC Assistance
-            </div>
+    <div className="session-title">
+      Policy Details
+    </div>
 
-          </div>
+  </div>
 
-          <div
-            className="session-item"
-            onClick={() =>
-              handleQuickPrompt(
-                "What are the personal loan interest rates?"
-              )
-            }
-          >
+  <div
+    className="session-item"
+    onClick={() =>
+      handleQuickPrompt(
+        "What are the requirements discussed?"
+      )
+    }
+  >
 
-            <div className="session-dot"></div>
+    <div className="session-dot"></div>
 
-            <div className="session-title">
-              Interest Rate FAQs
-            </div>
+    <div className="session-title">
+      Requirements
+    </div>
 
-          </div>
+  </div>
 
-        </div>
+</div>
 
-        {/* USER */}
-
-        <div className="sidebar-user">
-
-          <div className="user-avatar-sm">
-            APS
-          </div>
-
-          <div className="user-info">
-
-            <div className="user-name">
-              Anuj Pratap Singh
-            </div>
-
-            <div className="user-status">
-              AI Banking Assistant
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+        
 
       {/* MAIN CONTENT */}
 

@@ -62,13 +62,14 @@ function App() {
 
       const response = await axios.post(
   "https://banking-rag-chatbot-production.up.railway.app/chat",
-        {},
-        {
-          params: {
-            query: text
-          }
-        }
-      );
+  {},
+  {
+    params: {
+      query: text
+    },
+    timeout: 30000
+  }
+);
 
       const aiMessage = {
         sender: "ai",
@@ -86,7 +87,8 @@ function App() {
 
       const errorMessage = {
         sender: "ai",
-        text: "Error connecting to backend server.",
+        text:
+  "Server timeout or backend issue. Please try again.",
         time: getCurrentTime()
       };
 

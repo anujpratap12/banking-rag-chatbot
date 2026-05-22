@@ -3,7 +3,7 @@ from rank_bm25 import BM25Okapi
 from backend.rag.vector_store import collection
 
 
-def hybrid_search(query, top_k=3):
+def hybrid_search(query, top_k=2):
 
     # semantic search
     semantic_results = collection.query(

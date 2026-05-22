@@ -10,13 +10,15 @@ function App() {
     {
       sender: "ai",
       text:
-        "Hello 👋 I'm your AI Banking Assistant powered by RAG. Upload banking documents and ask me questions about loans, credit cards, KYC, interest rates, banking policies, or financial procedures.",
+        "Hello 👋 I'm your AI Banking Assistant powered by RAG. Upload any PDF, DOCX, or TXT document and ask intelligent questions about its content.",
       time: getCurrentTime(),
-      sources: ["banking_policy.pdf", "loan_faqs.pdf"]
+      sources: ["document_search", "vector_database"]
     }
   ]);
 
   const [loading, setLoading] = useState(false);
+
+  const [uploading, setUploading] = useState(false);
 
   const [file, setFile] = useState(null);
 
@@ -32,7 +34,7 @@ function App() {
       behavior: "smooth"
     });
 
-  }, [messages, loading]);
+  }, [messages, loading, uploading]);
 
   // CURRENT TIME
 
@@ -61,15 +63,15 @@ function App() {
     try {
 
       const response = await axios.post(
-  "https://banking-rag-chatbot-production.up.railway.app/chat",
-  {},
-  {
-    params: {
-      query: text
-    },
-    timeout: 30000
-  }
-);
+        "https://banking-rag-chatbot-production.up.railway.app/chat",
+        {},
+        {
+          params: {
+            query: text
+          },
+          timeout: 30000
+        }
+      );
 
       const aiMessage = {
         sender: "ai",
@@ -88,7 +90,7 @@ function App() {
       const errorMessage = {
         sender: "ai",
         text:
-  "Server timeout or backend issue. Please try again.",
+          "Server timeout or backend issue. Please try again.",
         time: getCurrentTime()
       };
 
@@ -136,6 +138,8 @@ function App() {
       return;
     }
 
+    setUploading(true);
+
     const formData = new FormData();
 
     formData.append("file", file);
@@ -143,15 +147,19 @@ function App() {
     try {
 
       await axios.post(
-  "https://banking-rag-chatbot-production.up.railway.app/upload",
+        "https://banking-rag-chatbot-production.up.railway.app/upload",
         formData
       );
 
       setUploadedFileName(file.name);
 
+      setUploading(false);
+
       alert("File uploaded successfully!");
 
     } catch (error) {
+
+      setUploading(false);
 
       alert("File upload failed.");
     }
@@ -160,7 +168,7 @@ function App() {
   // QUICK PROMPTS LIST
 
   const quickPrompts = [
-  
+
     "Summarize the uploaded document",
     "What are the key points in this document?",
     "Explain the important policies mentioned",
@@ -190,7 +198,7 @@ function App() {
             </div>
 
             <div className="logo-sub">
-              BANKING SUPPORT AGENT
+              SMART DOCUMENT ASSISTANT
             </div>
 
           </div>
@@ -217,79 +225,102 @@ function App() {
         </div>
 
         {/* SESSION LIST */}
+
         <div className="session-list">
 
-  <div
-    className="session-item session-active"
-    onClick={() =>
-      handleQuickPrompt(
-        "Summarize the uploaded document"
-      )
-    }
-  >
+          <div
+            className="session-item session-active"
+            onClick={() =>
+              handleQuickPrompt(
+                "Summarize the uploaded document"
+              )
+            }
+          >
 
-    <div className="session-dot dot-active"></div>
+            <div className="session-dot dot-active"></div>
 
-    <div className="session-title">
-      Document Summary
-    </div>
+            <div className="session-title">
+              Document Summary
+            </div>
 
-  </div>
+          </div>
 
-  <div
-    className="session-item"
-    onClick={() =>
-      handleQuickPrompt(
-        "What are the key points in this document?"
-      )
-    }
-  >
+          <div
+            className="session-item"
+            onClick={() =>
+              handleQuickPrompt(
+                "What are the key points in this document?"
+              )
+            }
+          >
 
-    <div className="session-dot"></div>
+            <div className="session-dot"></div>
 
-    <div className="session-title">
-      Key Points
-    </div>
+            <div className="session-title">
+              Key Points
+            </div>
 
-  </div>
+          </div>
 
-  <div
-    className="session-item"
-    onClick={() =>
-      handleQuickPrompt(
-        "Explain the important policies mentioned"
-      )
-    }
-  >
+          <div
+            className="session-item"
+            onClick={() =>
+              handleQuickPrompt(
+                "Explain the important policies mentioned"
+              )
+            }
+          >
 
-    <div className="session-dot"></div>
+            <div className="session-dot"></div>
 
-    <div className="session-title">
-      Policy Details
-    </div>
+            <div className="session-title">
+              Policy Details
+            </div>
 
-  </div>
+          </div>
 
-  <div
-    className="session-item"
-    onClick={() =>
-      handleQuickPrompt(
-        "What are the requirements discussed?"
-      )
-    }
-  >
+          <div
+            className="session-item"
+            onClick={() =>
+              handleQuickPrompt(
+                "What are the requirements discussed?"
+              )
+            }
+          >
 
-    <div className="session-dot"></div>
+            <div className="session-dot"></div>
 
-    <div className="session-title">
-      Requirements
-    </div>
+            <div className="session-title">
+              Requirements
+            </div>
 
-  </div>
+          </div>
 
-</div>
+        </div>
 
-        
+        {/* USER */}
+
+        <div className="sidebar-user">
+
+          <div className="user-avatar-sm">
+            APS
+          </div>
+
+          <div className="user-info">
+
+            <div className="user-name">
+              Anuj Pratap Singh
+            </div>
+
+            <div className="user-status">
+              AI RAG Developer
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
       {/* MAIN CONTENT */}
 
@@ -312,7 +343,7 @@ function App() {
             <div className="top-bar-titles">
 
               <div className="chat-title">
-                AI Banking Support Chatbot
+                AI Document Intelligence Chatbot
               </div>
 
               <div className="chat-subtitle">
@@ -379,6 +410,42 @@ function App() {
         {/* CHAT BOX */}
 
         <div className="chat-box">
+
+          {/* FILE UPLOAD ANIMATION */}
+
+          {uploading && (
+
+            <div className="message-row ai-row">
+
+              <div className="avatar ai-avatar">
+                AI
+              </div>
+
+              <div className="message-col">
+
+                <div className="bubble ai-bubble typing-bubble">
+
+                  <p style={{ marginBottom: "10px" }}>
+                    Analyzing uploaded document...
+                  </p>
+
+                  <div className="typing-dots">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          )}
+
+          {/* CHAT MESSAGES */}
 
           {messages.map((msg, index) => (
 
@@ -468,7 +535,7 @@ function App() {
             </div>
           ))}
 
-          {/* TYPING */}
+          {/* CHATBOT TYPING */}
 
           {loading && (
 
@@ -515,7 +582,7 @@ function App() {
           <input
             type="text"
             className="chat-input"
-            placeholder="Ask banking questions..."
+            placeholder="Ask questions about uploaded documents..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyPress}
@@ -535,7 +602,7 @@ function App() {
 
         <div className="footer-note">
 
-          AI Banking Support Assistant • Hybrid Search • ChromaDB • FastAPI • React • OpenRouter
+          AI RAG Assistant • Hybrid Search • ChromaDB • FastAPI • React • OpenRouter
 
         </div>
 

@@ -89,6 +89,12 @@ The project demonstrates:
 ## Multi-Document Support - TXT
 
 ![TXT Support](screenshots/multi-doc-support_3.png)
+
+---
+
+# Architecture Diagram
+
+![Architecture Diagram](screenshots/Architecture.png)
 # Tech Stack
 
 ## Frontend

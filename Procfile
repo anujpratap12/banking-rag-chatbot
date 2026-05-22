@@ -1,1 +1,1 @@
-web: PYTHONPATH=/app uvicorn main:app --host 0.0.0.0 --port $PORT
+web: PYTHONPATH=/app /app/.venv/bin/uvicorn main:app --host 0.0.0.0 --port $PORT

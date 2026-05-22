@@ -2,10 +2,10 @@ from fastapi import APIRouter, UploadFile, File
 import os
 import shutil
 
-from rag.extractor import extract_text
-from rag.chunker import chunk_text
-from rag.embeddings import generate_embeddings
-from rag.vector_store import store_chunks
+from backend.rag.extractor import extract_text
+from backend.rag.chunker import chunk_text
+from backend.rag.embeddings import generate_embeddings
+from backend.rag.vector_store import store_chunks
 
 router = APIRouter()
 

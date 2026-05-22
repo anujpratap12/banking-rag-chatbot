@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
-from rag.hybrid_retriever import hybrid_search
-from rag.prompt_builder import build_prompt
-from rag.generator import generate_response
+from backend.rag.hybrid_retriever import hybrid_search
+from backend.rag.prompt_builder import build_prompt
+from backend.rag.generator import generate_response
 
-from rag.memory import (
+from backend.rag.memory import (
     add_to_memory,
     get_memory
 )

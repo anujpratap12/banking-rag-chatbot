@@ -61,7 +61,7 @@ function App() {
     try {
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/chat",
+  "https://banking-rag-chatbot-production.up.railway.app/chat",
         {},
         {
           params: {
@@ -141,7 +141,7 @@ function App() {
     try {
 
       await axios.post(
-        "http://127.0.0.1:8000/upload",
+  "https://banking-rag-chatbot-production.up.railway.app/upload",
         formData
       );
 
